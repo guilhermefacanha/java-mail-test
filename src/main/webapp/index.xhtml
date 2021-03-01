@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+  <ui:define name="content">
+
+    <style>
+.ui-tabs.ui-tabs-top {
+	border-bottom: 0px solid #DDDDDD;
+}
+</style>
+
+    <p:panel>
+      <h1>Java Email Test</h1>
+      <p>Email test using apache commons client and Jboss EAP JNDI Client.</p>
+
+      <h:form style="width:100%">
+        <p:tabView>
+          <p:tab title="Commons Client">
+            <p:commandButton value="Send Commons Client" process="@form" actionListener="#{mailBean.sendCommonsClient()}" update="@form" />
+            <br />
+            <br />
+            <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-6">
+              <p:outputLabel for="@next" value="Host" />
+              <p:inputText value="#{mailBean.host}" />
+              <p:outputLabel for="@next" value="Port" />
+              <p:inputText value="#{mailBean.port}" />
+
+              <p:outputLabel for="@next" value="Username" />
+              <p:inputText value="#{mailBean.username}" />
+
+              <p:outputLabel for="@next" value="Password" />
+              <p:password value="#{mailBean.password}" />
+
+              <p:outputLabel for="@next" value="Debug Mode" />
+              <p:inputSwitch value="#{mailBean.debug}" />
+              <p:outputLabel for="@next" value="USE SSL" />
+              <p:inputSwitch value="#{mailBean.ssl}" />
+              <p:outputLabel for="@next" value="USE TLS" />
+              <p:inputSwitch value="#{mailBean.tsl}" />
+            </p:panelGrid>
+          </p:tab>
+          <p:tab title="EAP Client">
+            <p:commandButton value="Send EAP Client" process="@form" actionListener="#{mailBean.sendEapClient()}" update="@form" />
+            <br />
+            <br />
+            <p:panelGrid columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-6">
+
+              <p:outputLabel for="@next" value="Jboss JNDI Lookup" />
+              <p:inputText value="#{mailBean.jndi}" placeholder="java:jboss/mail/ecomail" />
+            </p:panelGrid>
+          </p:tab>
+        </p:tabView>
+        <p:panelGrid style="margin-left: 30px" columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-6">
+
+          <p:outputLabel for="@next" value="Send To" />
+          <p:inputText value="#{mailBean.sendTo}" />
+          <p:outputLabel for="@next" value="Subject" />
+          <p:inputText value="#{mailBean.subject}" />
+          <p:outputLabel for="@next" value="Message" />
+          <p:inputTextarea value="#{mailBean.message}" rows="10" />
+
+        </p:panelGrid>
+
+        <br />
+
+      </h:form>
+
+    </p:panel>
+  </ui:define>
+
+</ui:composition> 
