@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+  <div class="layout-footer clearfix" id="footer">
+    <a href="dashboard.xhtml">
+      <p:graphicImage name="logo_m.png" library="img" />
+    </a>
+    <span class="footer-text-right" style="margin-top: 0px;">
+      <span class="ui-icon ui-icon-copyright"></span>
+      <span>All Rights Reserved</span>
+    </span>
+  </div>
+  <script>
+    var docHeight = window.innerHeight;
+    var content = document.getElementById('content-principal').clientHeight;
+    var diff = (docHeight - content)/2;
+    var footer = document.getElementById('footer');
+    var footerHeight = footer.clientHeight+5;
+    var footerTop = footer.offsetTop;
+    diff = docHeight-(footerTop+footerHeight);
+    if(diff > 0){
+      footer.style.marginTop = diff+"px";
+      }
+  </script>
+</ui:composition> 

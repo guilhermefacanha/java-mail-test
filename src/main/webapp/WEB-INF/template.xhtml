@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" lang="en">
+
+<h:head>
+  <f:facet name="first">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </f:facet>
+  <title><ui:insert name="title">ECO ICMS</ui:insert></title>
+  <link rel="shortcut icon" type="image/x-icon" href="#{resource['/img/favicon.ico']}" />
+  <h:outputScript name="funcoes.js" library="javascript" />
+  <h:outputScript name="js/nanoscroller.js" library="serenity-layout" />
+  <h:outputScript name="js/layout.js" library="serenity-layout" />
+  <h:outputScript name="js/ripple.js" library="serenity-layout" />
+  <ui:insert name="head" />
+</h:head>
+
+<h:body>
+  <style>
+input, textarea {
+	width: 90%;
+}
+</style>
+  <div class="layout-wrapper #{guestPreferences.orientationRTL ? 'layout-rtl' : null} #{guestPreferences.horizontal ? 'layout-menu-horizontal' : null}">
+
+    <div class="layout-main">
+
+      <div class="layout-content" id="content-principal">
+        <p:tooltip />
+        <p:growl showDetail="true" showSummary="false" closable="true">
+          <p:autoUpdate />
+        </p:growl>
+        <ui:insert name="content" />
+      </div>
+
+      <ui:include src="./footer.xhtml" />
+
+      <div class="layout-main-mask"></div>
+    </div>
+  </div>
+
+  <p:ajaxStatus onstart="PF('statusdlg').show();" oncomplete="PF('statusdlg').hide();" style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+  </p:ajaxStatus>
+  <p:dialog modal="true" widgetVar="statusdlg" closable="false" resizable="false" draggable="false" showHeader="false">
+    <i class="fa fa-circle-o-notch fa-spin ajax-loader" aria-hidden="true"></i>
+  </p:dialog>
+
+  <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" closeOnEscape="true" responsive="true" widgetVar="confirm">
+    <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+    <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+  </p:confirmDialog>
+
+  <h:outputStylesheet name="css/nanoscroller.css" library="serenity-layout" />
+  <h:outputStylesheet name="css/ripple.css" library="serenity-layout" />
+  <h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css" library="serenity-layout" />
+  <h:outputStylesheet name="custom-style.css" library="css" />
+
+  <script type="text/javascript">
+	function start() {
+	    PF('statusdlg').show();
+	}
+
+	function stop() {
+	    PF('statusdlg').hide();
+	}
+	</script>
+
+  <ui:insert name="javascript" />
+
+</h:body>
+
+</html> 
