@@ -16,6 +16,7 @@ public class EmailConfig implements Serializable {
     private static final long serialVersionUID = -6225061944159641876L;
 
     private String usuario;
+    private String from;
     @ToString.Exclude
     private String senha;
     private String host;

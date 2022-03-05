@@ -26,7 +26,7 @@ public class MailBean implements Serializable {
 
     @Getter
     @Setter
-    private String jndi, username, password, host, port, sendTo, subject, message;
+    private String jndi, username, from, password, host, port, sendTo, subject, message;
 
     @Getter
     @Setter
@@ -46,6 +46,7 @@ public class MailBean implements Serializable {
                     .port(port)
                     .senha(password)
                     .usuario(username)
+                    .from(from)
                     .debug(debug)
                     .ssl(ssl)
                     .tsl(tsl)
